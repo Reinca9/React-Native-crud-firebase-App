@@ -26,4 +26,4 @@
 
 <h2> Screenshot: </h2>
 <div> </div>
-<img scr='./assets/screenshots/Capture.PNG' />
+<img src='./assets/screenshots/Capture.PNG' />
