@@ -25,15 +25,17 @@ export const db = getFirestore(app);
 function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  
+  // useEffect( () => {
+  //   signOut(auth)
+  // }, [])
   useEffect(() => {
     const subscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
-        setLoading(false)
+        setLoading(false);
       } else {
         setUser(null);
-        setLoading(false)
+        setLoading(false);
       }
     });
     return subscribe;
@@ -59,9 +61,15 @@ function App() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {user ? (
           <>
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Create" component={Create} />
-            <Stack.Screen name="Edit" component={Edit} />
+            <Stack.Screen name="Home">
+              {(props) => <Home {...props} user={user} />}
+            </Stack.Screen>
+            <Stack.Screen name="Create">
+              {(props) => <Create {...props} user={user} />}
+            </Stack.Screen>
+            <Stack.Screen name="Edit">
+              {(props) => <Edit {...props} user={user} />}
+            </Stack.Screen>
           </>
         ) : (
           <>

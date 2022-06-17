@@ -51,7 +51,6 @@ export default function SignUp() {
       await addDoc( collection(db, 'users'), {
         name: name,
         email: email,
-        password: password,
         age: age,
         gender: gender,
         uid: result.user.uid
